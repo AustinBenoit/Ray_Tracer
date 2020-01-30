@@ -21,12 +21,16 @@ void saveToBMP(std::string const& filename,
                std::size_t height,
                std::vector<Colour> const& image);
 
-// Your code here.
-
 struct ShadeRec {
 	Colour colour;
 	float t;
 };
+
+/* 
+ * Virtual class for the geometric objects in the sence
+ * TO DO: Fix it so that colour is stored here
+ */
+
 
 class Geometric_Obj {
 public:
@@ -148,6 +152,12 @@ private:
 };
 
 
+/* 
+ * Hold all of the objects of the scene 
+ * hit_colour returns if the ray hit an object in the scene. Returns the colour of the closest object
+ * TO DO: Fix it so that the colour returned - not great style and need to fix how the closest obj is found
+ */
+
 class World {
 public:
 	World() {}
@@ -177,6 +187,10 @@ public:
 	}
 };
 
+/* 
+ * Renders with one ray per pixel that is cented in the pixel
+ */
+
 void render (World& scene, atlas::math::Ray<atlas::math::Vector> ray,  std::size_t image_width, std::size_t image_height, std::vector<Colour>& image, Colour background)
 {
 	ShadeRec trace_data{};
@@ -195,6 +209,10 @@ void render (World& scene, atlas::math::Ray<atlas::math::Vector> ray,  std::size
 
 }
 
+
+/* 
+ * Renders the scene with random anti alisasing the caller must define how many samples per pixel they would like
+ */
 void render_aa(World& scene, atlas::math::Ray<atlas::math::Vector> in_ray, std::size_t image_width, std::size_t image_height, std::vector<Colour>& image, Colour background, int samples_pp) {
 	ShadeRec trace_data{};
 
@@ -204,8 +222,6 @@ void render_aa(World& scene, atlas::math::Ray<atlas::math::Vector> in_ray, std::
 			Colour colour_avg{ 0,0,0 };
 			srand(12345);
 			for (int i{ 0 }; i < samples_pp; ++i) {
-
-				//((float)rand() / RAND_MAX)
 
 				in_ray.o = { x + ((float)rand() / (RAND_MAX))  , y + ((float)rand() / (RAND_MAX)), 0 };
 
