@@ -2,8 +2,6 @@
 
 int main()
 {
-    // Your code here.
-
     // the geometric objects
      Sphere s1{ {480,  400, 10}, 10, {1,.5,0} };
      Sphere s2{ {40,  80, 100}, 20, {.2,.8,.6} };
@@ -14,16 +12,14 @@ int main()
 
      Plane p1{ {30,30,30}, {1,1,1}, {1,0,0} };
      Plane p2{ {570,30,30}, {0,1,1}, {0,0,1} };
-
-	 Triangle t1{ { 300,20,10 }, { 150,300, 10 }, { 450, 300, 10 }, { 1,1,1 } };
+	
+     Triangle t1{ { 300,20,10 }, { 150,300, 10 }, { 450, 300, 10 }, { 1,1,1 } };
 
 
      
      // Holds everything and checks if a ray hits an object
      World scene{};
-
-	 scene.add_obj(&t1);
-	 
+     scene.add_obj(&t1); 
      scene.add_obj(&s1);
      scene.add_obj(&s2);
      scene.add_obj(&s3);
