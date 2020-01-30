@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.12)
-project(RAY_TRACER LANGUAGES CXX C)
+project(Ray_Tracer LANGUAGES CXX C)
 
 set(Ray_Tracer_ROOT "${PROJECT_SOURCE_DIR}")
 
