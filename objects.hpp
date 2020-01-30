@@ -155,7 +155,8 @@ private:
 /* 
  * Hold all of the objects of the scene 
  * hit_colour returns if the ray hit an object in the scene. Returns the colour of the closest object
- * TO DO: Fix it so that the colour returned - not great style and need to fix how the closest obj is found
+ * TO DO: Fix hit_colour - not great style and need to fix how the closest obj is found
+ *        Add the rendering functions in some how.
  */
 
 class World {
@@ -189,6 +190,7 @@ public:
 
 /* 
  * Renders with one ray per pixel that is cented in the pixel
+ * TO DO: Create a render class
  */
 
 void render (World& scene, atlas::math::Ray<atlas::math::Vector> ray,  std::size_t image_width, std::size_t image_height, std::vector<Colour>& image, Colour background)
