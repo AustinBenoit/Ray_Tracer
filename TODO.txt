@@ -1,0 +1,4 @@
+1. Write my own image save 
+2. Write my own dot and cross product functions\
+3. Add pinhole camera in the renderer
+4. Add better anti aliasing techniques
