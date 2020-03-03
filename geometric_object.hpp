@@ -1,10 +1,6 @@
 #ifndef GEOMETRIC_OBJECT_H
 #define GEOMETRIC_OBJECT_H
 
-#include
-
-
-
 class GeometricObj {
 public:
     virtual bool hit(atlas::math::Ray<atlas::math::Vector> const& ray, ShadeRec& trace_data) const = 0;
@@ -34,6 +30,8 @@ protected:
     Colour colour_;
     std::shared_ptr<Material> material_;
 };
+
+
 
 
 #endif
