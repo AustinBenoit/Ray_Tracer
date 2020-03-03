@@ -1,5 +1,7 @@
 #include <iostream>
 #include "BMP/bitmap_image.hpp"
+#include <boost/version.hpp>
+#include <iomanip>
 
 void save_to_bmp(std::string image_name, int height, int width, std::vector<rgb_t>& data){
 
@@ -19,7 +21,14 @@ bitmap_image image(width,height);
 int main()
 {
 
-
+    std::cout << "Boost version: " 
+          << BOOST_VERSION / 100000
+          << "."
+          << BOOST_VERSION / 100 % 1000
+          << "."
+          << BOOST_VERSION % 100 
+          << std::endl;
+    return 0;
 
   /*
  std::vector<rgb_t> data;
