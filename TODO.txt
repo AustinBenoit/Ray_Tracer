@@ -1,3 +1,4 @@
 1. Change to work with the make file
 2. refactor the code split everything out into the right header files
 3. Refactor the code to not be dependent on atlas
+3. using https://sourceforge.net/projects/ggt/files/latest/download
