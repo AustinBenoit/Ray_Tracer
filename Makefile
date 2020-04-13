@@ -1,9 +1,9 @@
 # AUTHOR: Austin Benoit
-#
+# -I /usr/local/opt/boost
 #
 
 CC            := g++
-OPTIONS       := -std=c++14 -I /usr/local/opt/boost -pedantic-errors -Wall -Wall -Werror -Wextra
+OPTIONS       := -std=c++14  -pedantic-errors -Wall -Wall -Werror -Wextra
 
 all: ray_tracer
 

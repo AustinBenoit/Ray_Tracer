@@ -1,14 +1,14 @@
 #include "BMP/bitmap_image.hpp"
 #include "Maths/maths.hpp"
 
-#include <boost/geometry.hpp>
-#include <boost/geometry/arithmetic/dot_product.hpp>
+//#include <boost/geometry.hpp>
+//#include <boost/geometry/arithmetic/dot_product.hpp>
 #include <iostream>
 #include <iomanip>
 
 
 
-namespace bg = boost::geometry;
+//namespace bg = boost::geometry;
 
 void save_to_bmp(std::string image_name, int height, int width, std::vector<rgb_t>& data){
 
