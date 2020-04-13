@@ -3,12 +3,16 @@
 #
 
 CC            := g++
-OPTIONS       := -std=c++14 -I /usr/local/opt/boost -pedantic-errors -Wall -Wall -Werror -Wextra -o
+OPTIONS       := -std=c++14 -I /usr/local/opt/boost -pedantic-errors -Wall -Wall -Werror -Wextra
 
 all: ray_tracer
 
-ray_tracer: main.cpp BMP/bitmap_image.hpp
-	$(CC) main.cpp $(OPTIONS) ray_tracer.out
+ray_tracer: main.cpp BMP/bitmap_image.hpp  maths.o
+	$(CC) main.cpp maths.o $(OPTIONS) -o ray_tracer.out
+
+maths.o: Maths/maths.hpp Maths/maths.cpp
+	$(CC) $(OPTIONS) -c Maths/maths.cpp
 
 clean:
-	rm -r *.out
+	rm -r *.out 
+	rm -r *.o

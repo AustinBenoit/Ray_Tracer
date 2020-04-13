@@ -1,10 +1,12 @@
 #include "BMP/bitmap_image.hpp"
+#include "Maths/maths.hpp"
+
 #include <boost/geometry.hpp>
 #include <boost/geometry/arithmetic/dot_product.hpp>
 #include <iostream>
 #include <iomanip>
 
-// Add in typedefing for the point class
+
 
 namespace bg = boost::geometry;
 
@@ -29,20 +31,22 @@ class Sphere  {
 	*/
 
 public:
-  Sphere(bg::model::point<float, 3, bg::cs::cartesian>  center, float radius) :
+  Sphere(maths::Point3D center, float radius) :
     center_{ center },
     //radius_{ radius },
     radius_sqr_{ radius * radius }
   { }
 
-  bool hit(bg::model::point<float, 3, bg::cs::cartesian> origin,
-	   bg::model::point<float, 3, bg::cs::cartesian>  direction) const 
+  bool hit( maths::Point3D origin, maths::Vector direction)
 	{
-	  boost::geometry::subtract_point(origin, center_);
-	  auto o_c { origin };
-	  auto a{ boost::geometry::dot_product(direction, direction) };
-	  auto b{ boost::geometry::dot_product(direction, o_c) * 2 };
-	  auto c{ boost::geometry::dot_product(o_c, o_c) - radius_sqr_ };
+	  
+	  maths::Vector o_c (origin.x() - center_.x(),
+			     origin.y() - center_.y(),
+			     origin.z() - center_.z());
+	  
+	  auto a{ maths::Vector::dot(direction, direction) };
+	  auto b{ maths::Vector::dot(direction, o_c) * 2 };
+	  auto c{ maths::Vector::dot(o_c, o_c) - radius_sqr_ };
 	  
 	  auto roots{ b * b - (4.0f * a * c) };
 	  if (roots >= 0.0f) {
@@ -57,7 +61,7 @@ public:
 	}
   
 private:
-  bg::model::point<float, 3, bg::cs::cartesian>  center_;
+  maths::Point3D  center_;
   //float radius_;
   float radius_sqr_;
 };
@@ -69,13 +73,13 @@ int main(){
   const int height = 600;
   const int width = 600;
 
-  Sphere s1(bg::model::point<float, 3, bg::cs::cartesian>(300.0f, 300.0f, 0.0f), 300.0f);
+  Sphere s1(maths::Point3D(300.0f, 300.0f, 0.0f), 300.0f);
   for(int j {0} ; j < height; ++j){
      for(int i {0} ; i < width; ++i){
-       bg::model::point<float, 3,bg::cs::cartesian> origin
+       maths::Point3D origin
        	 ((0.0f) + (float)i +  0.5f , 0.0f + (float)j + 0.5f, 900.0f);
        
-       bg::model::point<float, 3,bg::cs::cartesian> direction
+       maths::Vector direction
 	 (0.0f , 0.0f, -1.0f);
 	rgb_t c{0,0,0};
 	 if(s1.hit(origin, direction)){

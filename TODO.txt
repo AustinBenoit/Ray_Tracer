@@ -1,3 +1,13 @@
-1. Create own point and "vector class" or wrap the boost library to be better suited.
-2. refactor the code split everything out into the right header files
+Short term
+1. refactor the code split everything out into the right header files
+2. Add in shadeRec struct
+3. Create Geometry class
+4. Add in other primitives (Box and triangle)
+5. Look at doing build automation and testing in git? Or locally. 
 
+Long term:
+1. Camera
+2. Materials
+3. Textures
+4. AA and sampling
+5. Add in meshes
