@@ -37,15 +37,15 @@ public:
     radius_sqr_{ radius * radius }
   { }
 
-  bool hit( maths::Point3D origin, maths::Vector direction)
+  bool hit( maths::Ray ray)
 	{
 	  
-	  maths::Vector o_c (origin.x() - center_.x(),
-			     origin.y() - center_.y(),
-			     origin.z() - center_.z());
+	  maths::Vector o_c (ray.o.x() - center_.x(),
+			     ray.o.y() - center_.y(),
+			     ray.o.z() - center_.z());
 	  
-	  auto a{ maths::Vector::dot(direction, direction) };
-	  auto b{ maths::Vector::dot(direction, o_c) * 2 };
+	  auto a{ maths::Vector::dot(ray.d, ray.d) };
+	  auto b{ maths::Vector::dot(ray.d, o_c) * 2 };
 	  auto c{ maths::Vector::dot(o_c, o_c) - radius_sqr_ };
 	  
 	  auto roots{ b * b - (4.0f * a * c) };
@@ -76,13 +76,10 @@ int main(){
   Sphere s1(maths::Point3D(300.0f, 300.0f, 0.0f), 300.0f);
   for(int j {0} ; j < height; ++j){
      for(int i {0} ; i < width; ++i){
-       maths::Point3D origin
-       	 ((0.0f) + (float)i +  0.5f , 0.0f + (float)j + 0.5f, 900.0f);
-       
-       maths::Vector direction
-	 (0.0f , 0.0f, -1.0f);
+       maths::Vector direction(0.0f , 0.0f, -1.0f);
 	rgb_t c{0,0,0};
-	 if(s1.hit(origin, direction)){
+	if(s1.hit(maths::Ray((0.0f) + (float)i +  0.5f , 0.0f + (float)j + 0.5f, 900.0f ,
+			     0.0f , 0.0f, -1.0f ))) {
 	   c = make_colour(0,0,255);
 	 }else{
 	   c = make_colour(0,0,0);
@@ -91,7 +88,6 @@ int main(){
        data.push_back(c);
      }
    }
-
 
    save_to_bmp("output.bmp", height, width, data);
    

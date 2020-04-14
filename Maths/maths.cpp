@@ -1,5 +1,7 @@
 #include "maths.hpp"
+
 #include <cmath>
+#include <memory>
 
 maths::Point3D::Point3D() :
   x_{0}, y_{0}, z_{0} {}
@@ -47,3 +49,13 @@ void maths::Vector::normalize(){
   y_ = y_ / length;
   z_ = z_ / length;
 }
+
+maths::Ray::Ray() :
+  o{maths::Point3D()},
+  d{maths::Vector()}
+  {}
+
+maths::Ray::Ray(float ox, float oy, float oz, float dx, float dy, float dz) :
+  o{maths::Point3D(ox, oy, oz)},
+  d{maths::Vector(dx, dy, dz)}
+  {}
