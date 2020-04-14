@@ -17,7 +17,7 @@ Author: Arash Partow
 URL: http://partow.net/programming/bitmap/index.html
 
 ## requirements
-Must have the BOOST C++
+Must have BOOST C++
 
 ## Build
 Run make 
