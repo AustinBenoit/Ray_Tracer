@@ -3,11 +3,11 @@ Short term
 2. Add in shadeRec struct
 3. Create Geometry class
 4. Add in other primitives (Box and triangle)
+1. continue with camera class implimentation
 5. Look at doing build automation and testing in git? Or locally. 
 
 Long term:
-1. Camera
+1. Load in meshes
 2. Materials
 3. Textures
 4. AA and sampling
-5. Add in meshes
