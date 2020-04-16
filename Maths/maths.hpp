@@ -15,9 +15,9 @@ namespace maths
     Point3D();
     Point3D(float x, float y, float z);
 
-    float x();
-    float y();
-    float z();
+    float X() const;
+    float Y() const;
+    float Z() const;
 
     void set_x(float x);
     void set_y(float y);
@@ -32,18 +32,19 @@ namespace maths
   public:
     Vector();
     Vector(float x, float y, float z);
-    float x();
-    float y();
-    float z();
+    float X() const;
+    float Y() const;
+    float Z() const;
 
     void set_x(float x);
     void set_y(float y);
     void set_z(float z);
     
-    void normalize();
+    void Normalize();
     
-    static float dot(const Vector &v1, const Vector &v2);
-    static Vector cross(const Vector &v1, const Vector &v2);
+    static float Dot(const Vector &v1, const Vector &v2);
+    static Vector Cross(const Vector &v1, const Vector &v2);
+    
   };
 
   // Holds a Ray by creating a point and a vector

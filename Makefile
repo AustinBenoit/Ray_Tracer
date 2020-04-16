@@ -4,18 +4,22 @@
 
 CC            := g++
 OPTIONS       := -std=c++14  -pedantic-errors -Wall -Wall -Werror -Wextra
-INCLUDE       := -I /Ray_Tracer/
+INCLUDE       := -I Includes/
 
 all: ray_tracer
 
-ray_tracer: main.cpp BMP/bitmap_image.hpp  maths.o
-	$(CC) main.cpp maths.o $(OPTIONS) $(INCLUDE) -o ray_tracer.out
+ray_tracer: main.cpp BMP/bitmap_image.hpp  maths.o geometricobject.o
+	$(CC) main.cpp maths.o geometricobject.o\
+		$(OPTIONS) $(INCLUDE) -o ray_tracer.out
 
 maths.o: Maths/maths.hpp Maths/maths.cpp
 	$(CC) $(OPTIONS) $(INCLUDE) -c Maths/maths.cpp
 
 camera.o: maths.o Camera/camera.cpp Camera/camera.hpp
 	$(CC) $(OPTIONS) $(INCLUDE) -c Camera/camera.cpp
+
+geometricobject.o: maths.o GeometricObject/geometricobject.hpp GeometricObject/geometricobject.cpp
+	$(CC) $(OPTIONS) $(INCLUDE) -c GeometricObject/geometricobject.cpp
 
 clean:
 	rm -r *.out 
