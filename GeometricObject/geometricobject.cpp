@@ -1,6 +1,7 @@
 #include "geometricobject.hpp"
 #include "includes.hpp"
 
+
 void GeometricObj::SetColour(rgb_t const& col)
 {
   colour_ = col;
