@@ -22,9 +22,9 @@ namespace maths
     void set_x(float x);
     void set_y(float y);
     void set_z(float z);
-
   };
 
+  
   class Vector
   {
   private:
@@ -44,8 +44,11 @@ namespace maths
     
     static float Dot(const Vector &v1, const Vector &v2);
     static Vector Cross(const Vector &v1, const Vector &v2);
+
+    operator Point3D() {return Point3D(x_, y_, z_);}
     
   };
+
 
   // Holds a Ray by creating a point and a vector
   // mainly used to hold both a point and a vector in a clean way
@@ -60,7 +63,10 @@ namespace maths
     Ray(float ox, float oy, float oz, float dx, float dy, float dz);
     
   };
-  
 }
+  maths::Vector operator* (const float &f, const maths::Vector & v);
+  maths::Vector operator* (const maths::Vector & v, const float &f);
+  maths::Vector operator+ (const maths::Vector & v1, const maths::Vector& v2);
+  maths::Vector operator/ (const maths::Vector & v, const float & f);
 
 #endif

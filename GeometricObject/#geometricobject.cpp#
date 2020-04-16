@@ -44,7 +44,7 @@ bool Sphere::Hit( maths::Ray const& ray, ShadeRec &trace_data) const
       trace_data.colour = colour_;
       trace_data.normal = norm;
       trace_data.material = material_;
-      //trace_data.hit_point = ray.o + t * ray.d;
+      trace_data.hit_point = ray.o + t * ray.d;
       return true;
     }
 
@@ -57,7 +57,7 @@ bool Sphere::Hit( maths::Ray const& ray, ShadeRec &trace_data) const
       trace_data.colour = colour_;
       trace_data.normal = norm;
       trace_data.material = material_;
-      //trace_data.hit_point = ray.o + t * ray.d;
+      trace_data.hit_point = ray.o + t * ray.d;
       return true;
     }
   }

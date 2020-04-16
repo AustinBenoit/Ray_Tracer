@@ -3,14 +3,14 @@
 # Add in camera.o
 
 CC            := g++
-OPTIONS       := -std=c++14  -pedantic-errors -Wall -Wall -Werror -Wextra
+OPTIONS       := -std=c++14  -pedantic-errors -Wall -Wall -Werror -Wextra 
 INCLUDE       := -I Includes/
 
 all: ray_tracer
 
 ray_tracer: main.cpp BMP/bitmap_image.hpp  maths.o geometricobject.o
 	$(CC) main.cpp maths.o geometricobject.o\
-		$(OPTIONS) $(INCLUDE) -o ray_tracer.out
+		$(OPTIONS) -lc++ $(INCLUDE) -o ray_tracer.out
 
 maths.o: Maths/maths.hpp Maths/maths.cpp
 	$(CC) $(OPTIONS) $(INCLUDE) -c Maths/maths.cpp

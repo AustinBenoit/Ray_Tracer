@@ -60,3 +60,18 @@ maths::Ray::Ray(float ox, float oy, float oz, float dx, float dy, float dz) :
   d{maths::Vector(dx, dy, dz)}
 {}
 
+maths::Vector operator* (const float &f, const maths::Vector & v){
+  return maths::Vector(v.X() * f , v.Y() * f, v.Z() * f);
+}
+
+maths::Vector operator* (const maths::Vector & v, const float &f){
+  return maths::Vector(v.X() * f , v.Y() * f, v.Z() * f);
+}
+
+maths::Vector operator+ (const maths::Vector & v1, const maths::Vector& v2){
+  return maths::Vector(v1.X() + v2.X(), v1.Y() + v2.Y(), v1.Z() + v2.Z());
+}
+  
+maths::Vector operator/ (const maths::Vector & v, const float & f){
+  return maths::Vector(v.X() / f, v.Y() / f, v.Z() / f);
+}
