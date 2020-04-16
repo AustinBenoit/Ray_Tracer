@@ -1,30 +1,23 @@
 # Ray Tracer
-A ray tracer written in c++
+A ray tracer written in C++
+
+Currently only produces a blue circle.
 
 ## Goals
-- Impliments a simple UI interface and a custom Ray Tracer.
+- Impliments a simple UI interface to watch the render and a custom Ray Tracer.
 
 ## To Do:
-- Create make file
+- Adding in Camera Class
 - Clean up and separate header files and cpp
 - Add screen drawing in addition to saving the image.
 
-
-currently using the cmake version with main.cpp and objects,hpp
-I am in the process of refactoring code
-using the make file with the test_main and the other files
-
+## BMP Function
 The bmp file save function is written by
 Author: Arash Partow
 URL: http://partow.net/programming/bitmap/index.html
 
-Must have the BOOST c++ used for some of the geometric values
+## requirements
+Must have BOOST C++
 
-Used the Atlas libraires and some openGL.
-
-Atlas :
-https://github.com/marovira/atlas
-
-
-# Build
+## Build
 Run make 
