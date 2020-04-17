@@ -4999,4 +4999,15 @@ const rgb_t yarg_colormap[1000] = {
    {254, 254, 254}, {254, 254, 254}, {254, 254, 254}, {255, 255, 255}, {255, 255, 255}
 };
 
+
+inline void save_to_bmp(std::string image_name, int height, int width, std::vector<rgb_t>& data){
+  bitmap_image image(width,height);
+  for(unsigned int j = 0 ; j < image.height(); ++j){
+    for(unsigned int i {0} ; i < image.width(); ++i){
+      image.set_pixel(i , j , data[ i + j * image.height() ] );
+    }
+  }
+   image.save_image(image_name);
+}
+
 #endif

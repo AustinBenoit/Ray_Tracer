@@ -8,7 +8,7 @@ class Material
 public:
     virtual ~Material() = default;
 
-    virtual  rgb_t shade(ShadeRec& sr) = 0;
+    virtual  Colour shade(ShadeRec& sr) = 0;
 };
 
 #endif

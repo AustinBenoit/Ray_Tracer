@@ -1,10 +1,15 @@
+Where I left off. 
+Just finished making sure world works
+Next up is finish materials and camera
+
 Short term
 1. refactor the code split everything out into the right header files
-2. Add in shadeRec struct
-3. Create Geometry class
-4. Add in other primitives (Box and triangle)
-1. continue with camera class implimentation
+2. Continue materials work
+3. Add in other primitives (Box and triangle)
+4. continue with camera class implimentation
 5. Look at doing build automation and testing in git? Or locally. 
+6. Fix sampler and then fix render_ortho_scene
+7. Fix multi obj tracer
 
 Long term:
 1. Load in meshes

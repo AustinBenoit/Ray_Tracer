@@ -3,13 +3,13 @@
 # Add in camera.o
 
 CC            := g++
-OPTIONS       := -std=c++14  -pedantic-errors -Wall -Wall -Werror -Wextra 
+OPTIONS       := -std=c++17  -pedantic-errors -Wall -Wall -Werror -Wextra 
 INCLUDE       := -I Includes/
 
 all: ray_tracer
 
-ray_tracer: main.cpp BMP/bitmap_image.hpp  maths.o geometricobject.o
-	$(CC) main.cpp maths.o geometricobject.o\
+ray_tracer: main.cpp maths.o geometricobject.o world.o
+	$(CC) main.cpp maths.o geometricobject.o world.o \
 		$(OPTIONS) -lc++ $(INCLUDE) -o ray_tracer.out
 
 maths.o: Maths/maths.hpp Maths/maths.cpp
@@ -21,6 +21,17 @@ camera.o: maths.o Camera/camera.cpp Camera/camera.hpp
 geometricobject.o: maths.o GeometricObject/geometricobject.hpp GeometricObject/geometricobject.cpp
 	$(CC) $(OPTIONS) $(INCLUDE) -c GeometricObject/geometricobject.cpp
 
+lights.o : Lights/lights.hpp Lights/lights.cpp
+	$(CC) $(OPTIONS) $(INCLUDE) -c Lights/lights.cpp
+
+world.o: camera.o lights.o geometricobject.o maths.o
+	$(CC) $(OPTIONS) $(INCLUDE) -c World/world.cpp
+
+tracer.o: Tracer/tracer.hpp Tracer/tracer.cpp world.o
+	$(CC) $(OPTIONS) $(INCLUDE) -c Tracer/tracer.cpp
+
+
+
 clean:
-	rm -r *.out 
 	rm -r *.o
+	rm -r *.out 

@@ -2,12 +2,12 @@
 #include "includes.hpp"
 
 
-void GeometricObj::SetColour(rgb_t const& col)
+void GeometricObj::SetColour(Colour const& col)
 {
   colour_ = col;
 }
 
-rgb_t GeometricObj::GetColour() const
+Colour GeometricObj::GetColour() const
 {
   return colour_;
 }
@@ -44,7 +44,7 @@ bool Sphere::Hit( maths::Ray const& ray, ShadeRec &trace_data) const
       trace_data.colour = colour_;
       trace_data.normal = norm;
       trace_data.material = material_;
-      //trace_data.hit_point = ray.o + t * ray.d;
+      trace_data.hit_point = ray.o + t * ray.d;
       return true;
     }
 
@@ -53,11 +53,12 @@ bool Sphere::Hit( maths::Ray const& ray, ShadeRec &trace_data) const
       maths::Vector norm = ((o_c + t * ray.d) / radius_);
       norm.Normalize();
       trace_data.hit_obj = true;
+      
       trace_data.t = t;
       trace_data.colour = colour_;
       trace_data.normal = norm;
       trace_data.material = material_;
-      //trace_data.hit_point = ray.o + t * ray.d;
+      trace_data.hit_point = ray.o + t * ray.d;
       return true;
     }
   }

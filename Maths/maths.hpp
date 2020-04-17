@@ -2,10 +2,11 @@
 #define MATHS_HPP
 
 #include <memory>
+#include <cmath>
 
 namespace maths
 {
-
+  
   class Point3D
   {
   private:
@@ -24,7 +25,6 @@ namespace maths
     void set_z(float z);
   };
 
-  
   class Vector
   {
   private:
@@ -46,9 +46,7 @@ namespace maths
     static Vector Cross(const Vector &v1, const Vector &v2);
 
     operator Point3D() {return Point3D(x_, y_, z_);}
-    
   };
-
 
   // Holds a Ray by creating a point and a vector
   // mainly used to hold both a point and a vector in a clean way
@@ -64,9 +62,13 @@ namespace maths
     
   };
 }
-  maths::Vector operator* (const float &f, const maths::Vector & v);
-  maths::Vector operator* (const maths::Vector & v, const float &f);
-  maths::Vector operator+ (const maths::Vector & v1, const maths::Vector& v2);
-  maths::Vector operator/ (const maths::Vector & v, const float & f);
 
+maths::Vector operator* (const float &f, const maths::Vector & v);
+maths::Vector operator* (const maths::Vector & v, const float &f);
+maths::Vector operator+ (const maths::Vector & v1, const maths::Vector& v2);
+maths::Vector operator- (const maths::Vector & v1, const maths::Vector& v2);
+maths::Vector operator/ (const maths::Vector & v, const float & f);
+maths::Point3D operator+(const maths::Point3D & p1, const maths::Point3D & p2);
+
+bool areEqual(float a, float b);
 #endif

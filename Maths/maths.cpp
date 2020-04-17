@@ -71,7 +71,21 @@ maths::Vector operator* (const maths::Vector & v, const float &f){
 maths::Vector operator+ (const maths::Vector & v1, const maths::Vector& v2){
   return maths::Vector(v1.X() + v2.X(), v1.Y() + v2.Y(), v1.Z() + v2.Z());
 }
+
+maths::Vector operator- (const maths::Vector & v1, const maths::Vector& v2){
+  return maths::Vector(v1.X() - v2.X(), v1.Y() - v2.Y(), v1.Z() - v2.Z());
+}
   
 maths::Vector operator/ (const maths::Vector & v, const float & f){
   return maths::Vector(v.X() / f, v.Y() / f, v.Z() / f);
+}
+
+maths::Point3D operator+ (const maths::Point3D & p1, const maths::Point3D & p2){
+  return maths::Vector(p1.X() + p2.X(), p1.Y() + p2.Y(), p1.Z() + p2.Z());
+}
+
+bool areEqual(float a, float b)
+{
+  float eps = 0.0001;
+return (fabs(a - b) < eps);
 }

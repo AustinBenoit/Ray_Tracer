@@ -1,7 +1,9 @@
 # Ray Tracer
-A ray tracer written in C++
+A ray tracer written in C++.
+Currently only renders an orthographic image but I am working on 
+a perspective based render 
 
-Currently only produces a blue circle.
+## Sample Image 
 
 ## Goals
 - Impliments a simple UI interface to watch the render and a custom Ray Tracer.
@@ -16,7 +18,7 @@ The bmp file save function is written by
 Author: Arash Partow
 URL: http://partow.net/programming/bitmap/index.html
 
-## requirements
+## Requirements
 Must have BOOST C++
 
 ## Build
