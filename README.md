@@ -1,9 +1,11 @@
 # Ray Tracer
 A ray tracer written in C++.
 Currently only renders an orthographic image but I am working on 
-a perspective based render 
+a perspective based render. 
 
 ## Sample Image 
+
+<img src="/SampleImages/out.png" width="300">
 
 ## Goals
 - Impliments a simple UI interface to watch the render and a custom Ray Tracer.
