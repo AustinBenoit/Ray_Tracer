@@ -17,7 +17,3 @@ void Light::setColour(Colour const& c)
 {
   colour_ = c;
 }
-
-Colour operator * (float f , const Colour & c ){
-  return Colour(c.r * f, c.g * f, c.b * f);
-}

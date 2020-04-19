@@ -1,6 +1,9 @@
 #ifndef INCLUDES_HPP
 #define INCLUDES_HPP
 
+// may occasionally need PI 
+ const float  PI_F=3.14159265358979f;
+
 
 #include <thread>
 #include <memory>
@@ -12,6 +15,7 @@
 #include "../ViewPlane/viewplane.hpp"
 #include "../Colour/colour.hpp"
 #include "../ShadeRec/shaderec.hpp"
+#include "../BRDF/brdf.hpp"
 #include "../Material/material.hpp"
 #include "../GeometricObject/geometricobject.hpp"
 #include "../ViewPlane/viewplane.hpp"

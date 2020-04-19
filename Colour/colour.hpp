@@ -34,6 +34,13 @@ public:
   
 };
 
-Colour operator * (float f , const Colour & c );
+inline Colour operator * ( float f , const Colour & c )
+{return Colour(f * c.r, f * c.g, f * c.b); }
+
+inline Colour operator * ( const Colour & c, float f )
+{return Colour(f * c.r, f * c.g, f * c.b); }
+
+inline Colour operator / ( const Colour & c, float f )
+{return Colour( c.r / f, c.g / f, c.b / f ); }
 
 #endif 

@@ -24,7 +24,10 @@ geometricobject.o: maths.o GeometricObject/geometricobject.hpp GeometricObject/g
 lights.o : Lights/lights.hpp Lights/lights.cpp
 	$(CC) $(OPTIONS) $(INCLUDE) -c Lights/lights.cpp
 
-world.o: camera.o lights.o geometricobject.o maths.o
+brdf.o : maths.o BRDF/brdf.hpp BRDF/brdf.cpp
+	$(CC) $(OPTIONS) $(INCLUDE) -c BRDF/brdf.cpp
+
+world.o: camera.o lights.o geometricobject.o maths.o brdf.o
 	$(CC) $(OPTIONS) $(INCLUDE) -c World/world.cpp
 
 tracer.o: Tracer/tracer.hpp Tracer/tracer.cpp world.o
