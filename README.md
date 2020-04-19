@@ -1,17 +1,20 @@
 # Ray Tracer
 A ray tracer written in C++.
-Currently only renders an orthographic image but I am working on 
-a perspective based render. 
+Renders an orthographic or prespective image. Can use point lights with matte materials. 
 
 ## Sample Images
 
 <img src="/SampleImages/out.png" width="300"> <img src="/SampleImages/out_pinhole.png" width="300">
 
+Left is a basic orthographic render. Right is a perspective render with shadows and a matte like material. 
+
 ## Goals
 - Impliments a simple UI interface to watch the render and a custom Ray Tracer.
 
 ## To Do:
-- Adding in Camera Class
+- Adding in materials
+- Adding in meshes
+- Anti Aliasing
 - Clean up and separate header files and cpp
 - Add screen drawing in addition to saving the image.
 
@@ -24,4 +27,5 @@ URL: http://partow.net/programming/bitmap/index.html
 Must have BOOST C++
 
 ## Build
-Run make 
+Run make command
+then run the executable "ray_tracer.out"
