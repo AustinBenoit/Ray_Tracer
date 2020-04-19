@@ -2,9 +2,6 @@
 #define VIEWPLANE_HPP
 
 // to be removed once I have completed the sampler class
-//
-
-class Sampler;
 
 
 class ViewPlane {
@@ -12,8 +9,8 @@ public:
   std::size_t x_resolution_;
   std::size_t y_resolution_;
   
-  Sampler* sampler_ptr_;
-  int num_samples_;
+ // Sampler* sampler_ptr_;
+ // int num_samples_;
   int max_depth;
   
   ViewPlane() {}
@@ -25,8 +22,8 @@ public:
   ViewPlane(const ViewPlane& p) {
     x_resolution_ = p.x_resolution_;
     y_resolution_ = p.y_resolution_;
-    sampler_ptr_ = p.sampler_ptr_;
-    num_samples_ = p.num_samples_;
+//    sampler_ptr_ = p.sampler_ptr_;
+//    num_samples_ = p.num_samples_;
   }
   
   void SetMaxDepth(int depth) {
@@ -38,10 +35,10 @@ public:
     y_resolution_ = y;
   }
   
-  void set_sampler(Sampler* sp) {
-    num_samples_ = sp->getNumSamples();
-    sampler_ptr_ = sp;
-  }
+//  void set_sampler(Sampler* sp) {
+//    num_samples_ = sp->getNumSamples();
+//    sampler_ptr_ = sp;
+//  }
   
 };
 

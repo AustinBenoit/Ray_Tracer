@@ -1,5 +1,12 @@
 #include "camera.hpp"
-#include "includes.hpp"
+
+#include "Maths/maths.hpp"
+#include "BMP/bitmap_image.hpp"
+#include "Colour/colour.hpp"
+#include "Tracer/tracer.hpp"
+#include "ViewPlane/viewplane.hpp"
+
+#include <iostream>
 
 void Camera::compute_uvw() {
   w_ = maths::Vector(
@@ -39,8 +46,8 @@ void PinHole::get_image(ViewPlane& vp, World& w,
 			std::size_t end_row, std::size_t end_col)
 {
   float max_colour;
-  Colour pixel;
-  
+
+    Colour pixel;
   maths::Ray ray;
   
   ray.o = eye_;
@@ -48,25 +55,24 @@ void PinHole::get_image(ViewPlane& vp, World& w,
   //the aa point
   maths::Point3D sp;
   maths::Point3D ray_dir;
-  
   for (std::size_t r = start_row; r < end_row; ++r) {
     for (std::size_t c = start_col; c < end_col; ++c) {
-      pixel = { 0,0,0 }; // reset colour
-      for (int j{ 0 }; j < vp.num_samples_; ++j) {
+        
+        
+       pixel ={ 0.0f ,0.0f,0.0f }; // reset colour
+      //for (int j{ 0 }; j < vp.num_samples_; ++j) {
 	
-	sp = vp.sampler_ptr_->sampleUnitSquare();
-	
-	ray_dir.set_x( c - 0.5f  * vp.x_resolution_ + sp.X() );
-	ray_dir.set_y(r - 0.5f  * vp.y_resolution_ + sp.Y() );
+	//sp = vp.sampler_ptr_->sampleUnitSquare();
+        ray_dir.set_x( c - 0.5f  * vp.x_resolution_); //+ sp.X() );
+        ray_dir.set_y( r - 0.5f  * vp.y_resolution_); //+ sp.Y() );
 	
 	
 	//distance of one away from view  plane
 	ray.d = ray_direction(ray_dir);
-	
 	pixel += w.tracer_ptr->trace_ray(ray, 0);
-      }
+      //}
       
-      pixel /= vp.num_samples_;
+     // pixel /= vp.num_samples_;
       
       // check out of gamute
       max_colour = std::max(std::max(pixel.r, pixel.g), pixel.b);
@@ -75,7 +81,7 @@ void PinHole::get_image(ViewPlane& vp, World& w,
 	pixel.g /= max_colour;
 	pixel.b /= max_colour;
       }
-      
+    
       output_image[c + (vp.x_resolution_ - 1 - r) * vp.y_resolution_] = pixel;
     }
   }
@@ -91,7 +97,6 @@ void PinHole::render_scene(std::string out_file, World& w,
   output_image.assign(vp.x_resolution_ * vp.y_resolution_, w.background_colour); 
   get_image(vp, w, std::ref(output_image), 0, 0, vp.x_resolution_, vp.y_resolution_);
 
-  
   save_to_bmp(out_file, vp.x_resolution_, vp.y_resolution_, output_image);
 }
 

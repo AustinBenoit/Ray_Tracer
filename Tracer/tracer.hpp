@@ -1,7 +1,8 @@
 #ifndef TRACER_HPP
 #define TRACER_HPP
 
-#include "includes.hpp"
+#include "World/world.hpp"
+#include "Material/material.hpp"
 
 class World;
 

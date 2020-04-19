@@ -1,6 +1,12 @@
 #include "world.hpp"
-#include "includes.hpp"
 
+#include "Colour/colour.hpp"
+#include "GeometricObject/geometricobject.hpp"
+#include "Maths/maths.hpp"
+#include "ShadeRec/shaderec.hpp"
+#include "BMP/bitmap_image.hpp"
+#include "Camera/camera.hpp"
+#include "ViewPlane/viewplane.hpp"
 
 void World::add_obj(GeometricObj* obj) {
     objs.push_back(obj);

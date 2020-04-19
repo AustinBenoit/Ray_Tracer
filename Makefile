@@ -4,28 +4,25 @@
 
 CC            := g++
 OPTIONS       := -std=c++17  -pedantic-errors -Wall -Wall -Werror -Wextra 
-INCLUDE       := -I Includes/
+INCLUDE       := -I ../Ray_Tracer/
 
 all: ray_tracer
 
-ray_tracer: main.cpp maths.o geometricobject.o world.o
-	$(CC) main.cpp maths.o geometricobject.o world.o \
+ray_tracer: main.cpp maths.o geometricobject.o world.o material.o tracer.o brdf.o camera.o lights.o
+	$(CC) main.cpp maths.o geometricobject.o world.o tracer.o material.o brdf.o camera.o lights.o\
 		$(OPTIONS) -lc++ $(INCLUDE) -o ray_tracer.out
 
 maths.o: Maths/maths.hpp Maths/maths.cpp
 	$(CC) $(OPTIONS) $(INCLUDE) -c Maths/maths.cpp
 
-camera.o: maths.o Camera/camera.cpp Camera/camera.hpp
+camera.o: maths.o material.o Camera/camera.cpp Camera/camera.hpp
 	$(CC) $(OPTIONS) $(INCLUDE) -c Camera/camera.cpp
 
-geometricobject.o: maths.o GeometricObject/geometricobject.hpp GeometricObject/geometricobject.cpp
+geometricobject.o: maths.o material.o GeometricObject/geometricobject.hpp GeometricObject/geometricobject.cpp 
 	$(CC) $(OPTIONS) $(INCLUDE) -c GeometricObject/geometricobject.cpp
 
 lights.o : Lights/lights.hpp Lights/lights.cpp
 	$(CC) $(OPTIONS) $(INCLUDE) -c Lights/lights.cpp
-
-brdf.o : maths.o BRDF/brdf.hpp BRDF/brdf.cpp
-	$(CC) $(OPTIONS) $(INCLUDE) -c BRDF/brdf.cpp
 
 world.o: camera.o lights.o geometricobject.o maths.o brdf.o
 	$(CC) $(OPTIONS) $(INCLUDE) -c World/world.cpp
@@ -33,6 +30,11 @@ world.o: camera.o lights.o geometricobject.o maths.o brdf.o
 tracer.o: Tracer/tracer.hpp Tracer/tracer.cpp world.o
 	$(CC) $(OPTIONS) $(INCLUDE) -c Tracer/tracer.cpp
 
+brdf.o : maths.o BRDF/brdf.hpp BRDF/brdf.cpp
+	$(CC) $(OPTIONS) $(INCLUDE) -c BRDF/brdf.cpp
+
+material.o: Material/material.hpp Material/material.cpp maths.o
+	$(CC) $(OPTIONS) $(INCLUDE) -c Material/material.cpp
 
 
 clean:

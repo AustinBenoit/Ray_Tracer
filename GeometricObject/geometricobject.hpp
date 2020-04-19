@@ -1,10 +1,14 @@
 #ifndef GEOMETRICOBJECT_HPP
 #define GEOMETRICOBJECT_HPP
 
-#include "includes.hpp"
+#include "Maths/maths.hpp"
+#include "ShadeRec/shaderec.hpp"
+
 
 // Needs:
 // maths
+
+//class Material;
 
 class GeometricObj{
 public:

@@ -1,8 +1,11 @@
 #ifndef CAMERA_HPP
 #define CAMERA_HPP
 
-#include "../Maths/maths.hpp"
-#include "includes.hpp"
+#include "Maths/maths.hpp"
+#include "BMP/bitmap_image.hpp"
+#include "Colour/colour.hpp"
+#include "Tracer/tracer.hpp"
+#include "ViewPlane/viewplane.hpp"
 
 // Needs:
 // maths

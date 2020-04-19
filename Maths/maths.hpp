@@ -6,6 +6,8 @@
 
 namespace maths
 {
+
+const float  PI_F=3.14159265358979f;
   
   class Point3D
   {
@@ -23,6 +25,8 @@ namespace maths
     void set_x(float x);
     void set_y(float y);
     void set_z(float z);
+
+    float Distance(const Point3D &p) const ;
   };
 
   class Vector

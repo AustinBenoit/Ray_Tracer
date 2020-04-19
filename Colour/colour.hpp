@@ -1,7 +1,7 @@
 #ifndef COLOUR_HPP
 #define COLOUR_HPP
 
-#include "includes.hpp"
+#include "BMP/bitmap_image.hpp"
 
 class Colour{
 public:
@@ -42,5 +42,8 @@ inline Colour operator * ( const Colour & c, float f )
 
 inline Colour operator / ( const Colour & c, float f )
 {return Colour( c.r / f, c.g / f, c.b / f ); }
+
+inline Colour operator * ( const Colour & c1, const Colour & c2 )
+{return Colour(c1.r * c2.r, c1.g * c2.g, c1.b * c2.b); }
 
 #endif 

@@ -1,7 +1,4 @@
-#ifndef MATERIAL_HPP
-#define MATERIAL_HPP
-
-#include <memory>
+#include "material.hpp"
 
 #include "Maths/maths.hpp"
 #include "BRDF/brdf.hpp"
@@ -9,57 +6,42 @@
 #include "Lights/lights.hpp"
 #include "ShadeRec/shaderec.hpp"
 
-class Material
+Colour Matte::shade(ShadeRec& sr)
 {
-public:
-  virtual ~Material() = default;
+  maths::Vector wo = -1.0f * sr.ray.d;
+  Colour L = ambient_BRDF_->rho(sr, wo) * sr.world->amb_light_ptr->L(sr);
+  size_t numLights = sr.world->lights.size();
 
-  virtual  Colour shade(ShadeRec& sr) = 0;
-};
+  for (size_t i{ 0 }; i < numLights; ++i)
+    {
+      maths::Vector wi = sr.world->lights[i]->getDirection(sr);
+      float nDotWi = maths::Vector::Dot(sr.normal, wi);
 
-class Matte : public Material
-{
-public:
-  Matte() :
-    Material{},
-    diffuse_BRDF_{ new Lambertian() },
-    ambient_BRDF_{ new Lambertian() }
-  {}
+      if (nDotWi > 0.0f)
+	{
+	  bool in_shadow = false;
 
-  Matte(float kd, float ka, Colour color) : Matte{}
-  {
-    setDiffuseReflection(kd);
-    setAmbientReflection(ka);
-    setDiffuseColour(color);
-  }
+	  if (sr.world->lights[i]->cast_shadows()) {
+	    maths::Ray shadowRay(sr.hit_point, wi);
+	    in_shadow = sr.world->lights[i]->in_shadow(shadowRay, sr);
+	  }
 
-  void setDiffuseReflection(float k)
-  {
-    diffuse_BRDF_->setDiffuseReflection(k);
-  }
+	  if (!in_shadow) {
+	    L += diffuse_BRDF_->fn(sr, wo, wi) * sr.world->lights[i]->L(sr) *
+	      nDotWi;
+	  }
+	}
+    }
 
-  void setAmbientReflection(float k)
-  {
-    ambient_BRDF_->setDiffuseReflection(k);
-  }
+  return L;
+}
 
-  void setDiffuseColour(Colour colour)
-  {
-    diffuse_BRDF_->setDiffuseColour(colour);
-    ambient_BRDF_->setDiffuseColour(colour);
-  }
-
-  Colour shade(ShadeRec& sr);
-
-private:
-    std::shared_ptr<Lambertian> diffuse_BRDF_;
-    std::shared_ptr<Lambertian> ambient_BRDF_;
-};
 /*
+
 class Phong : public Material {
 public:
     Phong() :
-        Material{},x
+        Material{},
         mDiffuseBRDF{ new Lambertian() },
         mAmbientBRDF{ new Lambertian() },
         mSpecularBRDF{ new GlossySpecular() }
@@ -184,7 +166,3 @@ private:
     std::shared_ptr<PerfectSpecular> mPerfectSpecularBRDF;
 };
 */
-
-#endif
-
-

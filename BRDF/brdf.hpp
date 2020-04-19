@@ -1,7 +1,9 @@
 #ifndef BRDF_HPP
 #define BRDF_HPP
 
-#include "includes.hpp"
+#include "Maths/maths.hpp"
+#include "ShadeRec/shaderec.hpp"
+#include "Colour/colour.hpp"
 
 class BRDF
 {

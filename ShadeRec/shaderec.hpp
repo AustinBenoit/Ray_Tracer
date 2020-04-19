@@ -1,8 +1,8 @@
 #ifndef SHADEREC_HPP
 #define SHADEREC_HPP
 
-#include "includes.hpp"
-
+#include "Maths/maths.hpp"
+#include "Colour/colour.hpp"
 class Material;
 class World;
 

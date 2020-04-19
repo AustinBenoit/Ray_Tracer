@@ -1,6 +1,7 @@
 #include "geometricobject.hpp"
-#include "includes.hpp"
 
+#include "Maths/maths.hpp"
+#include "ShadeRec/shaderec.hpp"
 
 void GeometricObj::SetColour(Colour const& col)
 {
@@ -81,13 +82,13 @@ bool Sphere::ShadowHit(maths::Ray const& ray, float& tmin) const
   if (roots >= 0.0f) {
     //hit
     float t = ((-b - std::sqrt(roots)) / (2.0f * a));
-    if (t > 0.001f) {
+    if (t > 0.01f) {
       tmin = t;
       return true;
     }
 
     t = ((-b + std::sqrt(roots)) / (2.0f * a));
-    if (t > 0.001f) {
+    if (t > 0.01f) {
       tmin = t;
       return true;
     }

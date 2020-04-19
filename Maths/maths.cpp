@@ -17,6 +17,15 @@ void maths::Point3D::set_x( float x ) { x_ = x;}
 void maths::Point3D::set_y( float y ) { y_ = y;}
 void maths::Point3D::set_z( float z ) { z_ = z;}
 
+float maths::Point3D::Distance(const maths::Point3D  &p) const {
+
+  float dist = (x_ - p.X() ) * (x_ - p.X() ) +
+    (y_ - p.Y() ) * (y_ - p.Y() ) +
+    (z_ - p.Z() ) * (z_ - p.Z() );
+  
+  return std::sqrt(dist);
+}
+
 
 maths::Vector::Vector() :
   x_{0}, y_{0}, z_{0} {}
@@ -53,6 +62,11 @@ void maths::Vector::Normalize(){
 maths::Ray::Ray() :
   o{maths::Point3D()},
   d{maths::Vector()}
+  {}
+
+maths::Ray::Ray(Point3D oo, Vector dd) :
+  o{oo},
+  d{dd}
   {}
 
 maths::Ray::Ray(float ox, float oy, float oz, float dx, float dy, float dz) :

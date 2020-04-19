@@ -1,5 +1,8 @@
 #include "brdf.hpp"
-#include "includes.hpp"
+
+#include "Maths/maths.hpp"
+#include "Colour/colour.hpp"
+#include "ShadeRec/shaderec.hpp"
 
 Colour PerfectSpecular::fn([[maybe_unused]] ShadeRec const& sr,
 			   [[maybe_unused]] maths::Vector const& reflected,
@@ -24,7 +27,7 @@ Colour Lambertian::fn([[maybe_unused]] ShadeRec const& sr,
 		      [[maybe_unused]] maths::Vector const& reflected,
 		      [[maybe_unused]] maths::Vector const& incoming) const
 {
-  return diffuse_colour_ * diffuse_reflection_ * ( 1.0f / PI_F);
+  return diffuse_colour_ * diffuse_reflection_ * ( 1.0f / maths::PI_F);
 }
 
 Colour Lambertian::rho([[maybe_unused]] ShadeRec const& sr,
