@@ -5,7 +5,8 @@ Renders an orthographic or prespective image. Can use point lights with matte ma
 
 ## Sample Images
 
-<img src="/SampleImages/Orthographic.png" width="300"> <img src="/SampleImages/Matte.png" width="300">
+<img src="/SampleImages/Orthographic.png" width="300"> <img src="/SampleImages/Matte.png" width="300"> 
+
 <img src="/SampleImages/Phong.png" width="300"> <img src="/SampleImages/Reflective.png" width="300">
 
 Top left is a basic orthographic render. Top Right is a perspective render with shadows and a matte like material. 
