@@ -1,5 +1,6 @@
 # Ray Tracer
 A ray tracer written in C++.
+
 Renders an orthographic or prespective image. Can use point lights with matte materials. 
 
 ## Sample Images
@@ -7,6 +8,14 @@ Renders an orthographic or prespective image. Can use point lights with matte ma
 <img src="/SampleImages/out.png" width="300"> <img src="/SampleImages/out_pinhole.png" width="300">
 
 Left is a basic orthographic render. Right is a perspective render with shadows and a matte like material. 
+
+## Features
+- Backward ray tracing
+- Orthographic output
+- Perspective 0utput with a virtual camera
+- Shadows
+- Point Lights
+- Ambient light
 
 ## Goals
 - Impliments a simple UI interface to watch the render and a custom Ray Tracer.
