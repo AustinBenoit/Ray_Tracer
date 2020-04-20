@@ -6,10 +6,10 @@ Renders an orthographic or prespective image. Can use point lights with matte ma
 ## Sample Images
 
 <img src="/SampleImages/Orthographic.png" width="300"> <img src="/SampleImages/Matte.png" width="300">
-
 <img src="/SampleImages/Phong.png" width="300"> <img src="/SampleImages/Reflective.png" width="300">
 
-Left is a basic orthographic render. Right is a perspective render with shadows and a matte like material. 
+Top left is a basic orthographic render. Top Right is a perspective render with shadows and a matte like material. 
+Bottom left is a perspective with phong shading. Bottom right is a perspective with reflective shading.
 
 ## Features
 - Backward ray tracing
