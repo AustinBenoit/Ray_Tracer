@@ -46,4 +46,17 @@ inline Colour operator / ( const Colour & c, float f )
 inline Colour operator * ( const Colour & c1, const Colour & c2 )
 {return Colour(c1.r * c2.r, c1.g * c2.g, c1.b * c2.b); }
 
+inline Colour operator + ( const Colour & c1, const Colour & c2 )
+{return Colour(c1.r + c2.r, c1.g + c2.g, c1.b + c2.b); }
+
+namespace colours {
+
+const Colour ORANGE        (1.0f, 0.7f, 0.0f);
+const Colour LIME_GREEN    (0.0f, 1.0f, 0.0f);
+const Colour RED           (1.0f, 0.0f, 0.0f);
+const Colour BLUE          (0.0f, 0.0f, 1.0f);
+const Colour WHITE         (1.0f, 1.0f, 1.0f);
+
+}
+
 #endif 

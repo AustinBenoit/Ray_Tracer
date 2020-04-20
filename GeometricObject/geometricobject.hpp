@@ -8,8 +8,6 @@
 // Needs:
 // maths
 
-//class Material;
-
 class GeometricObj{
 public:
   virtual bool Hit(maths::Ray const& ray, ShadeRec &s) const = 0;

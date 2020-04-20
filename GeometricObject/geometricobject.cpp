@@ -37,7 +37,7 @@ bool Sphere::Hit( maths::Ray const& ray, ShadeRec &trace_data) const
 
     
     float t = ((-b - std::sqrt(roots)) / (2.0f * a));
-    if (t > 0.0f) {
+    if (t > 0.01f) {
       maths::Vector norm = ((o_c + t * ray.d) / radius_);
       norm.Normalize();
       trace_data.hit_obj = true;
@@ -50,7 +50,7 @@ bool Sphere::Hit( maths::Ray const& ray, ShadeRec &trace_data) const
     }
 
     t = ((-b + std::sqrt(roots)) / (2.0f * a));
-    if (t > 0.0f) {
+    if (t > 0.01f) {
       maths::Vector norm = ((o_c + t * ray.d) / radius_);
       norm.Normalize();
       trace_data.hit_obj = true;
