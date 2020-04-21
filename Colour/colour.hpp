@@ -56,7 +56,8 @@ const Colour LIME_GREEN    (0.0f, 1.0f, 0.0f);
 const Colour RED           (1.0f, 0.0f, 0.0f);
 const Colour BLUE          (0.0f, 0.0f, 1.0f);
 const Colour WHITE         (1.0f, 1.0f, 1.0f);
-
+const Colour GREY          (0.2f, 0.2f, 0.2f);
+const Colour LIGHT_BLUE    (0.2f, 0.6f, 1.0f);
 }
 
 #endif 
