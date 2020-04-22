@@ -1,6 +1,8 @@
 #ifndef SAMPLER_HPP
 #define SAMPLER_HPP
 
+#include <random>
+
 class Sampler
 {
 public:
@@ -9,6 +11,7 @@ public:
     {
         mSamples.reserve(mNumSets* mNumSamples);
         setupShuffledIndeces();
+        distribution = std::uniform_int_distribution<int>(0,std::numeric_limits<int>::max());
     }
 
     virtual ~Sampler() = default;
@@ -45,22 +48,22 @@ public:
 
     maths::Point3D sampleUnitSquare() {
         if (mCount % mNumSamples == 0)
-        {
-	  //atlas::math::Random<int> engine;
-	  // mJump = (engine.getRandomMax() % mNumSets) * mNumSamples;
+	    {
+	      mJump = (distribution(generator_) % mNumSets) * mNumSamples;
         }
-
-        return  {0.5f, 0.5f, 0.0f};// mSamples[mJump + mShuffledIndeces[mJump + mCount++ % mNumSamples]];
+        return mSamples[mJump + mShuffledIndeces[mJump + mCount++ % mNumSamples]];
     }
 
 protected:
+  std::uniform_int_distribution<int> distribution;
+  std::default_random_engine generator_;
   std::vector<maths::Point3D> mSamples;
-    std::vector<int> mShuffledIndeces;
+  std::vector<int> mShuffledIndeces;
 
-    int mNumSamples;
-    int mNumSets;
-    unsigned long mCount;
-    int mJump;
+  int mNumSamples;
+  int mNumSets;
+  unsigned long mCount;
+  int mJump;
 };
 
 class Regular : public Sampler
@@ -87,7 +90,6 @@ public:
             }
         }
     }
-
 };
 
 #endif

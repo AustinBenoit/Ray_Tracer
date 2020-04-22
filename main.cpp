@@ -7,6 +7,7 @@
 #include "World/world.hpp"
 #include "Material/material.hpp"
 #include "Lights/lights.hpp"
+#include "Sampler/sampler.hpp"
 
 void World::build(){
   const int height = 600;
@@ -57,6 +58,7 @@ void World::build(){
   lights[0]->setColour({ 1, 1, 1 });
   lights[0]->scaleRadiance(1.5f);
   
+  vp.set_sampler(new Regular(16, 83));
   
   PinHole* pinhole_ptr = new PinHole;
   pinhole_ptr->set_eye(maths::Point3D{ 0,150,600 });
@@ -71,8 +73,5 @@ void World::build(){
 int main(){
   World w;
   w.build();
-  w.render_ortho_scene("out.bmp");
   w.camera_ptr->render_scene("out_pinhole.bmp", w, 64, false);
-  
-
 }

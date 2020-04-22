@@ -15,26 +15,28 @@ ray_tracer: main.cpp maths.o geometricobject.o world.o material.o tracer.o brdf.
 maths.o: Maths/maths.hpp Maths/maths.cpp
 	$(CC) $(OPTIONS) $(INCLUDE) -c Maths/maths.cpp
 
-camera.o: maths.o material.o Camera/camera.cpp Camera/camera.hpp
+camera.o: Camera/camera.cpp Camera/camera.hpp
 	$(CC) $(OPTIONS) $(INCLUDE) -c Camera/camera.cpp
 
-geometricobject.o: maths.o material.o GeometricObject/geometricobject.hpp GeometricObject/geometricobject.cpp 
+geometricobject.o: GeometricObject/geometricobject.hpp GeometricObject/geometricobject.cpp 
 	$(CC) $(OPTIONS) $(INCLUDE) -c GeometricObject/geometricobject.cpp
 
 lights.o : Lights/lights.hpp Lights/lights.cpp
 	$(CC) $(OPTIONS) $(INCLUDE) -c Lights/lights.cpp
 
-world.o: camera.o lights.o geometricobject.o maths.o brdf.o
+world.o: geometricobject.o maths.o brdf.o
 	$(CC) $(OPTIONS) $(INCLUDE) -c World/world.cpp
 
-tracer.o: Tracer/tracer.hpp Tracer/tracer.cpp world.o
+tracer.o: Tracer/tracer.hpp Tracer/tracer.cpp
 	$(CC) $(OPTIONS) $(INCLUDE) -c Tracer/tracer.cpp
 
-brdf.o : maths.o BRDF/brdf.hpp BRDF/brdf.cpp
+brdf.o : BRDF/brdf.hpp BRDF/brdf.cpp
 	$(CC) $(OPTIONS) $(INCLUDE) -c BRDF/brdf.cpp
 
-material.o: Material/material.hpp Material/material.cpp maths.o
+material.o : Material/material.hpp Material/material.cpp
 	$(CC) $(OPTIONS) $(INCLUDE) -c Material/material.cpp
+
+sampler.o : 
 
 
 clean:

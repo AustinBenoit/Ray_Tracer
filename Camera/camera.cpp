@@ -60,19 +60,19 @@ void PinHole::get_image(ViewPlane& vp, World& w,
         
         
        pixel ={ 0.0f ,0.0f,0.0f }; // reset colour
-      //for (int j{ 0 }; j < vp.num_samples_; ++j) {
+      for (int j{ 0 }; j < vp.num_samples_; ++j) {
 	
-	//sp = vp.sampler_ptr_->sampleUnitSquare();
-        ray_dir.set_x( c - 0.5f  * vp.x_resolution_); //+ sp.X() );
-        ray_dir.set_y( r - 0.5f  * vp.y_resolution_); //+ sp.Y() );
+	sp = vp.sampler_ptr_->sampleUnitSquare();
+        ray_dir.set_x( c - 0.5f  * vp.x_resolution_ + sp.X() );
+        ray_dir.set_y( r - 0.5f  * vp.y_resolution_ + sp.Y() );
 	
 	
 	//distance of one away from view  plane
 	ray.d = ray_direction(ray_dir);
 	pixel += w.tracer_ptr->trace_ray(ray, 0);
-      //}
+      }
       
-     // pixel /= vp.num_samples_;
+     pixel /= vp.num_samples_;
       
       // check out of gamute
       max_colour = std::max(std::max(pixel.r, pixel.g), pixel.b);
