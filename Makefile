@@ -8,8 +8,8 @@ INCLUDE       := -I ../Ray_Tracer/
 
 all: ray_tracer
 
-ray_tracer: main.cpp maths.o geometricobject.o world.o material.o tracer.o brdf.o camera.o lights.o
-	$(CC) main.cpp maths.o geometricobject.o world.o tracer.o material.o brdf.o camera.o lights.o\
+ray_tracer: main.cpp maths.o geometricobject.o world.o material.o tracer.o brdf.o camera.o lights.o sampler.o
+	$(CC) main.cpp maths.o geometricobject.o world.o tracer.o material.o brdf.o camera.o lights.o sampler.o\
 		$(OPTIONS) -lc++ $(INCLUDE) -o ray_tracer.out
 
 maths.o: Maths/maths.hpp Maths/maths.cpp
@@ -36,7 +36,8 @@ brdf.o : BRDF/brdf.hpp BRDF/brdf.cpp
 material.o : Material/material.hpp Material/material.cpp
 	$(CC) $(OPTIONS) $(INCLUDE) -c Material/material.cpp
 
-sampler.o : 
+sampler.o : Sampler/sampler.hpp Sampler/sampler.cpp
+	$(CC) $(OPTIONS) $(INCLUDE) -c Sampler/sampler.cpp
 
 
 clean:
