@@ -1,18 +1,11 @@
-Where I left off. 
-Just finished making sure world works
-Next up is finish materials and camera
+Done with the bulk of the implimentation. Now moving into makeing the system more useable.
 
 Short term
-1. refactor the code split everything out into the right header files
-2. Continue materials work
-3. Add in other primitives (Box and triangle)
-4. continue with camera class implimentation
-5. Look at doing build automation and testing in git? Or locally. 
-6. Fix sampler and then fix render_ortho_scene
-7. Fix multi obj tracer
+1. Add in more AA methods
+2. Try and get a UI up and going
+
 
 Long term:
 1. Load in meshes
-2. Materials
 3. Textures
-4. AA and sampling
+
