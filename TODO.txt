@@ -3,7 +3,7 @@ Done with the bulk of the implimentation. Now moving into makeing the system mor
 Short term
 1. Add in more AA methods
 2. Try and get a UI up and going
-3. Testing
+3. Testing more
 
 
 Long term:
