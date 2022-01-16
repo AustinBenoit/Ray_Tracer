@@ -27,7 +27,6 @@ Bottom left is a perspective with phong shading. Bottom right is a perspective w
 ## To Do:
 - Adding in materials
 - Adding in meshes
-- Anti Aliasing
 - Clean up and separate header files and cpp
 - Add screen drawing in addition to saving the image.
 
